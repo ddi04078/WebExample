@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>callback , ajax , asynchronous </title>
+	<script type="text/javascript" src="jquery.js"></script>
+</head>
+<body>
+	<script type="text/javascript">
+		$.get('book.json', function(result){
+			console.log(result);
+		}, 'json');
+	</script>
+</body>
+</html>
