@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>api example</title>
+</head>
+<body>
+	<h1> BOOK LIST </h1>
+	<p></p>
+	<script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript">
+	
+
+	// jquery ajax (cdn) 공식문서 들어간 다음 예제를 복붙 -> 카카오 api 문서 보면서 방식에 맞게 수정 
+	$.ajax({ 
+		// 요청에 대한 정보 
+	 	method: "GET", // 요청 방식 
+	  	url: "https://dapi.kakao.com/v3/search/book?target=title", // 요청 주소 
+	  	data: { query : "미움받을 용기" }, // 보낼 데이터 (json 형식에 맞게 고친다. )
+	  	headers : {Authorization: "KakaoAK ffed9cce07500c7b719786176f5f8c9a"} // 요청을 아무나 할 수 없게 api 키를 입력한다. 카카오 문서를 참고하면, 앱키를 헤더에 담으라고 한다. 
+	})	
+		// 요청에 대한 응답이 오면, 응답을 가지고 어떤 처리를 할 것인가 - 콜백 함수 
+	  	.done(function( msg ) {
+	    	console.log(msg.documents[0].title);
+	    	console.log(msg.documents[0].thumbnail);
+	    	// document.write(msg.documents[0].title + "<br>");
+	    	$("p").append("<strong>"+ msg.documents[0].title + "</strong> <br><br>");
+	    	$("p").append("<img src='" + msg.documents[0].thumbnail + "' height = '300'>");
+	  	});
+
+	</script>
+</body>
+</html>
